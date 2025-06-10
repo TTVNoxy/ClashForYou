@@ -1,125 +1,111 @@
+:root {
+  --bg: #121212;
+  --box: #1e1e1e;
+  --glow: #3b82f6;
+  --text: #f4f4f4;
+  --red-glow: #e11d48;
+  --green-glow: #10b981;
+  --gold-glow: #facc15;
+}
+
 body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #1e1e1e;
-  color: white;
+  padding: 0;
+  overflow-x: hidden;
 }
 
-header {
-  background-color: #262626;
-  padding: 1rem 2rem;
+.container {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.tabs {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 1rem;
-  padding: 0.5rem;
-}
-
-nav a:hover {
-  background-color: #333;
+.tab {
+  background: var(--box);
+  color: var(--text);
+  border: none;
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
   border-radius: 8px;
+  transition: background 0.3s;
 }
 
-main {
-  padding: 2rem;
+.tab:hover {
+  background: #333;
+}
+
+.tab.active {
+  border-bottom: 2px solid var(--glow);
 }
 
 .tab-content {
   display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
 }
 
 .tab-content.active {
   display: block;
+  opacity: 1;
 }
 
-.info-boxes {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.info-box {
-  background-color: #2c2c2c;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  text-align: center;
-  font-size: 1.2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.info-box:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 15px rgba(0, 153, 255, 0.5);
-}
-
-.stats-box {
-  background-color: #2c2c2c;
-  padding: 2rem;
-  border-radius: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.stats-box.neutral:hover {
-  box-shadow: 0 0 10px rgba(100, 100, 255, 0.5);
-}
-
-.stats-box.online {
-  box-shadow: 0 0 20px rgba(0, 255, 100, 0.6);
-}
-
-.stats-box.offline {
-  box-shadow: 0 0 20px rgba(255, 50, 50, 0.6);
-}
-
-.label {
-  color: #bbb;
-  margin-top: 1rem;
-  font-size: 1rem;
-}
-
-.value {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-input[type='text'] {
-  padding: 0.5rem;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: none;
-  width: 200px;
-}
-
-button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  margin-left: 1rem;
-  border-radius: 8px;
-  border: none;
-  background-color: #00aaff;
-  color: white;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0077aa;
-}
-
-.player-stats {
-  margin-top: 2rem;
-  background-color: #333;
+.box {
+  background: var(--box);
   padding: 1rem;
-  border-radius: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #00000050;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  perspective: 1000px;
+}
+
+.box:hover {
+  transform: rotateX(4deg) rotateY(-4deg);
+  box-shadow: 0 0 20px var(--glow);
+}
+
+.box.glow {
+  box-shadow: 0 0 15px var(--gold-glow);
+}
+
+.arena-theme {
+  border-left: 5px solid var(--glow);
+}
+
+.fade {
+  animation: fadein 0.6s ease;
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Crown loader */
+.crown-loader {
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+}
+.crown {
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  background: url('https://cdn.statsroyale.com/images/emojis/Crown.png') no-repeat center;
+  background-size: contain;
+  animation: bounce 1.5s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
 }
