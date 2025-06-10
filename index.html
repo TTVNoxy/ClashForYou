@@ -3,52 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Clash For You</title>
+  <title>Clash Royale Stats</title>
   <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
 </head>
 <body>
-  <header>
-    <div class="logo">Clash For You</div>
-    <nav>
-      <a href="#home" class="tab" data-tab="home">Home</a>
-      <a href="#info" class="tab" data-tab="info">Info</a>
-      <a href="#support" class="tab" data-tab="support">Support</a>
+  <div class="crown-loader">
+    <div class="crown"></div>
+  </div>
+
+  <div class="container">
+    <nav class="tabs">
+      <button class="tab active" data-tab="home">Home</button>
+      <button class="tab" data-tab="info">Info</button>
+      <button class="tab" data-tab="support">Support</button>
     </nav>
-  </header>
 
-  <main>
-    <section id="home" class="tab-content active">
-      <h1>Welcome to Clash For You</h1>
-      <div class="info-boxes">
-        <div class="info-box">Track your Clash Royale stats live!</div>
-        <div class="info-box">Check if the servers are online or down.</div>
-        <div class="info-box">Stay informed on the next game update.</div>
-      </div>
-      <div id="stats-box" class="stats-box neutral">
-        <h2>Live Game Stats</h2>
-        <p class="label">Trophies:</p>
-        <p id="player-trophies" class="value">Loading...</p>
+    <main>
+      <!-- Home Tab -->
+      <section class="tab-content active" id="home">
+        <div class="box glow" id="status-box">
+          <h2>Game Status</h2>
+          <div id="status">Checking...</div>
+          <div id="player-count">Fetching player count...</div>
+          <div id="next-update">Loading next update info...</div>
+        </div>
+      </section>
 
-        <p class="label">Server Status:</p>
-        <p id="server-status" class="value">Checking...</p>
+      <!-- Info Tab -->
+      <section class="tab-content" id="info">
+        <form id="player-form">
+          <input type="text" id="player-tag" placeholder="Enter your Clash Royale ID (e.g., #2PP)" required>
+          <button type="submit">Check Stats</button>
+        </form>
+        <div id="player-stats" class="box arena-theme fade">
+          <h2>Player Stats</h2>
+          <div id="arena-icon"></div>
+          <div id="stats"></div>
+          <div id="arena-bar"></div>
+        </div>
+        <div class="box fade" id="battlelog-box">
+          <h2>Recent Battles</h2>
+          <div id="battlelog"></div>
+        </div>
+      </section>
 
-        <p class="label">Next Update:</p>
-        <p id="next-update" class="value">Fetching...</p>
-      </div>
-    </section>
+      <!-- Support Tab -->
+      <section class="tab-content" id="support">
+        <div class="box fade">
+          <h2>Clan Info</h2>
+          <div id="clan-info">Enter a player ID in the Info tab to load clan info.</div>
+        </div>
+        <div class="box fade">
+          <h2>Season Countdown</h2>
+          <div id="season-timer">Loading...</div>
+        </div>
+      </section>
+    </main>
+  </div>
 
-    <section id="info" class="tab-content">
-      <h2>Enter Your Player Tag</h2>
-      <input type="text" id="playerTagInput" placeholder="e.g. #2PP" />
-      <button onclick="loadPlayerStats()">Get Stats</button>
-      <div id="player-stats" class="player-stats"></div>
-    </section>
-
-    <section id="support" class="tab-content">
-      <h2>Support</h2>
-      <p>If you need help, contact us at <a href="mailto:support@clashforyou.com">support@clashforyou.com</a></p>
-    </section>
-  </main>
+  <script src="script.js"></script>
 </body>
 </html>
